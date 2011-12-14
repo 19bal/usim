@@ -1,4 +1,8 @@
 <?php
-	echo "Hello World <br>";
-	echo "Burası SIM - Unstable<br>";
+
+F3::route("GET /",      function () { render('home', 'Ana Sayfa'); } );
+
+F3::run();
+
 ?>
+
