@@ -1,9 +1,9 @@
 <?php
 
 class Home extends F3instance {
-	function show() {
-		$this->set('pagetitle','Home');
-		$this->set('template','home');
+	function show($title='Home', $template='home') {
+		$this->set('pagetitle', $title);
+		$this->set('template', $template);
 	}
 
 	function route() {
@@ -17,7 +17,12 @@ class Home extends F3instance {
 		 */
 
 		$proje = $this->_getproje();
-		$this->call($proje."->show");
+		$version = $this->_getversion();
+
+		if($version)
+			$this->show("$proje-$version", $proje."_$version");
+		else
+			$this->show("$proje-GENEL", $proje);
 	}
 	
 	function _getproje() {
