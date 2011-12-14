@@ -1,13 +1,11 @@
 <?php
 
-class Soylesi extends F3instance {
+class soylesi extends Home {
 	function show() {
-		$this->set('pagetitle','Söyleşi');
-		$this->set('template','soylesi');
-	}
+		$version = $this->_getversion();
 
-	function afterroute() {
-		echo Template::serve('layout.htm');
+		$this->set("pagetitle", "Söyleşi-$version");
+		$this->set("template",  "soylesi_$version");
 	}
 }
 
