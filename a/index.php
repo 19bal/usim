@@ -1,12 +1,7 @@
 <?php
-require_once __DIR__.'/lib/base.php';
+$main=require_once __DIR__.'/inc/lib.php';
 
-F3::set('GUI','gui/');
-F3::set('INC','inc/');
+$main->route('GET /','Test->show');
 
-F3::route("GET /",      function () { echo "Hello world <br>Burası SIM - UNSTABLE"; } );
-
-F3::run();
-
+$main->run();
 ?>
-

@@ -1,15 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="TR" lang="tr">
-  <head>
-    <meta http-equiv = "Pragma" content = "no-cache" />
-    <meta http-equiv = "Expires" content = "-1" />
-    <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
-    <title>{{ @page_title }}</title>
-  </head>
-
-  <body>
-  	<F3:include href="{{@template}}.htm"/>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={{ @ENCODING }}"/>
+</head>
+<body>
+	<F3:include href="{{ @template }}.htm"/>
+</body>
 </html>
-

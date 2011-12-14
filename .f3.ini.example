@@ -1,0 +1,24 @@
+[globals]
+
+; F3 magic'leri
+extlink="window.open(this.href); return false;"
+AUTOLOAD="app/"
+RELEASE="FALSE"
+IMPORTS="inc/"
+FONTS="../public/fonts/"
+TEMP="tmp/"
+GUI="gui/"
+
+; Veritabanı
+dbname="sim"
+dbuser="sim"
+dbpass="12345"
+
+; default language
+lang="tr_TR"
+
+; Resim
+uploaddir="upload/"
+
+; dagitim: stable/test/?unstable
+dagitim="test"
