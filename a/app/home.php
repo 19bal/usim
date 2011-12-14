@@ -1,6 +1,6 @@
 <?php
 
-class Test extends F3instance {
+class Home extends F3instance {
 	function show() {
 		$this->set('pagetitle','Home');
 		$this->set('template','home');
