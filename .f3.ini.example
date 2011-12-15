@@ -1,13 +1,17 @@
 [globals]
-
 ; F3 magic'leri
-extlink="window.open(this.href); return false;"
-AUTOLOAD="app/"
 RELEASE="FALSE"
-IMPORTS="inc/"
-FONTS="../public/fonts/"
-TEMP="tmp/"
+CACHE="FALSE"
 GUI="gui/"
+FONTS="fonts/"
+IMPORTS="inc/"
+LAYOUTS="../layouts/"
+E404="layout.htm"
+TEMP="../tmp/"
+AUTOLOAD="app/"
+DEBUG="3"
+dbg="TRUE"
+extlink="window.open(this.href); return false;"
 
 ; Veritabanı
 dbname="sim"
@@ -21,4 +25,4 @@ lang="tr_TR"
 uploaddir="upload/"
 
 ; dagitim: stable/test/?unstable
-dagitim="test"
+dagitim="unstable"
