@@ -1,10 +1,9 @@
 <?php
 /*
- * D O  N O T  E D I T  M E
+ * B A N A  D O K U N M A
  *
- * bu dosyada degisiklik yapmak zorunda hissettiyseniz
- * bir kere daha dusunun ve seyyah@bil.omu.edu.tr ye
- * mail atarak isteginizi belirtin.
+ * bir seyleri degistirmen gerektigini dusunuyorsan
+ * onerinle birlikte seyyah@ce.omu.edu.tr gonder.
  */
 
 class Home extends F3instance {
