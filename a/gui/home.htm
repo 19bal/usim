@@ -1,23 +1,41 @@
-<table>
- <tr valign="top">
- 	<td>
-		<F3:include href="soylesi.htm"/>
-		<F3:include href="tahlil.htm"/>
-		<F3:include href="ilac.htm"/>
-		<F3:include href="xmap.htm"/>
-		<F3:include href="tani.htm"/>
-		<F3:include href="rapor.htm"/>
-		<F3:include href="medya.htm"/>
-		<F3:include href="nvis.htm"/>
-		<F3:include href="olgu.htm"/>
-	</td>
-	<td>
+<link rel="stylesheet" href="/a/public/css/base.css" type="text/css" media="all" /> 
+<link rel="stylesheet" href="/a/public/css/jquery-ui.css" type="text/css" media="all" />
+
+<script>
+	$(function() {
+		$( "#gorev" ).tabs();
+	});
+</script>
+
+<div id="gorev">
+ <ul>
+	<li><a href="#soylesi">Söyleşi</a>	</li>
+	<li><a href="#tahlil" >Tahlil</a>	</li>
+	<li><a href="#ilac"   >İlaç</a>		</li>
+	<li><a href="#xmap"   >Xmap</a>		</li>
+	<li><a href="#tani"   >Tanı</a>		</li>
+	<li><a href="#rapor"  >Rapor</a>	</li>
+	<li><a href="#medya"  >Medya</a>	</li>
+	<li><a href="#nvis"   >nvis</a>		</li>
+	<li><a href="#olgu"   >Olgu</a>		</li>
+	<li><a href="#sinifsiz">Sınıflandırılmamış</a>		</li>
+ </ul>
+
+ <div id="soylesi"> <F3:include href="soylesi.htm"/> 	</div>
+ <div id="tahlil"> 	<F3:include href="tahlil.htm"/>		</div>
+ <div id="ilac"> 	<F3:include href="ilac.htm"/>		</div>
+ <div id="xmap"> 	<F3:include href="xmap.htm"/>		</div>
+ <div id="tani"> 	<F3:include href="tani.htm"/>		</div>
+ <div id="rapor"> 	<F3:include href="rapor.htm"/>		</div>
+ <div id="medya"> 	<F3:include href="medya.htm"/>		</div>
+ <div id="nvis"> 	<F3:include href="nvis.htm"/>		</div>
+ <div id="olgu"> 	<F3:include href="olgu.htm"/>		</div>
+ <div id="sinifsiz">
 		<h1>Sınıflandırılmamış</h1>
 
 		<ul>
 			<li> #3: <a href="/a/jeditable/">jeditable</a>
 			<li> #31: <a href="/a/chss/">chss</a> (ÇSS: Çoktan Seçmeli Soru)
 		</ul>
-	</td>
- </tr>
-</table>
+ </div>
+</div>
