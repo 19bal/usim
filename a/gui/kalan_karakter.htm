@@ -1,0 +1,165 @@
+<script src="/a/public/js/jquery.min.js"></script>
+<script src="/a/public/js/jquery.NobleCount.min.js" type="text/javascript"></script> 
+<script>
+var Say = function (){
+	var limit = 100;
+	var yazi = $("textarea[name=yazi]").val();
+	var yaziAdet = yazi.length;
+	var yuzdeBar = parseInt( 100 - (( limit - yaziAdet ) * 100 ) / limit );
+ 
+	if (yuzdeBar >= 0 && yuzdeBar < 50) {
+		$("#bar").width(yuzdeBar).css({'background-color':'green'});
+		$("#barText").html(yuzdeBar +"% | Karakter Sayisi : " + yaziAdet + " | Karakter Limitiniz: " + parseInt(limit - yaziAdet));
+	} else if (yuzdeBar >= 50 && yuzdeBar <= 75 ) {
+		$("#bar").width(yuzdeBar).css({'background-color':'yellow'});
+		$("#barText").html(yuzdeBar +"% | Karakter Sayisi : " + yaziAdet + " | Karakter Limitiniz: " + parseInt(limit - yaziAdet));
+	} else if (yuzdeBar > 75 && yuzdeBar < 100) {
+		$("#bar").width(yuzdeBar).css({'background-color':'red'});
+		$("#barText").html(yuzdeBar +"% | Karakter Sayisi : " + yaziAdet + " | Karakter Limitiniz: " + parseInt(limit - yaziAdet));
+	} else if (yuzdeBar >= 100 ) {
+		var deger = yazi.substring(0,limit);
+		yazi = deger;
+		$("textarea[name=yazi]").val(yazi);
+		$("#barText").html("100 % <br> Karakter Limitiniz Doldu !!!");
+	}
+}
+</script>
+	
+		<script type="text/javascript">  
+			$(document).ready(function () {
+				
+				$('#test2').NobleCount('#count2',{
+					on_negative: 'go_red'
+				});
+				$('#test3').NobleCount('#count3',{
+					on_negative: 'go_red',
+					on_positive: 'go_green'
+				});
+				
+				$('#test7').NobleCount('#count7',{
+					on_negative: 'go_red',
+					on_positive: 'go_green',
+					on_update: function(t_obj, char_area, c_settings, char_rem){
+						if (char_rem < 0) {
+							$(t_obj).css('font-weight', 'bold');
+							$(t_obj).css('color','red');
+						} else {
+							$(t_obj).css('font-weight', 'normal');
+							$(t_obj).css('color','black');
+						}
+					},
+					max_chars: 25,
+					cloak: true
+				});
+				$('#test8').NobleCount('#count8',{
+					on_negative: 'go_red',
+					on_positive: 'go_green',
+					max_chars: 25,
+					on_update: function(t_obj, char_area, c_settings, char_rem){
+						if ((char_rem % 10) == 0) {
+							char_area.css('font-weight', 'bold');
+							char_area.css('font-size', '300%');
+						} else {
+							char_area.css('font-weight', 'normal');
+							char_area.css('font-size', '100%');
+						}
+					}
+				});
+				$('#test9').NobleCount('#count9',{
+					max_chars: 25,
+					on_positive: function(t_obj, char_area, c_settings, char_rem){
+						$(t_obj).css('border','1px solid black');
+					},
+					on_negative: function(t_obj, char_area, c_settings, char_rem){
+						$(t_obj).css('border','5px solid red');
+					}
+				});
+				
+				$('#test11').NobleCount('#count11',{
+					max_chars: 25,
+					on_negative: function(t_obj, char_area, c_settings, char_rem){
+						alert('you are so negative!');
+					},
+					cloak: true
+				});
+				
+				$('#test13').NobleCount('#count13',{
+					max_chars: 25,
+					on_negative: 'go_red',
+					on_positive: 'go_green',
+					block_negative: true
+				});
+				
+
+
+			});
+	</script>
+		<style type="text/css">
+
+				div {
+				display: block;
+				}
+
+				#bar {
+				outline: 1px dotted black;
+				height: 20px;
+				color: black;
+				font-size: 15px;
+				text-align: center;
+				position:absolute;top:390px;left:110px;
+				}
+
+				.go_red {
+				color:red;
+				}
+								
+				.go_green {
+				color:green;
+				}
+
+
+		</style>
+</head>
+<body>
+<p>TEST 1</p></br>
+<textarea  cols="45" rows=15  name="yazi" onKeyUp="Say();"></textarea>
+<br /><br />
+<div >
+ 
+    <div id="bar" style="width:0px; background-color: green; "></div>
+    <div id="barText">100</div>
+</div><br><br><br><br><hr>
+
+<p>TEST 2</p>
+		<textarea id='test2'></textarea>
+		<br><span id='count2'></span> characters remaining remaining
+		<br><hr>
+<P>TEST 3</P>
+		<textarea id='test3'></textarea>
+		<br><span id='count3'></span> characters remaining remaining
+		<br><hr>
+<P> TEST 4</P>
+		<textarea id='test7'></textarea>
+		<br><span id='count7'></span> characters remaining remaining
+		<br><hr>
+<P>TEST 5</P>
+		<textarea id='test8'></textarea>
+		<br><span id='count8'></span> characters remaining remaining
+		<br><hr>
+<P>TEST 6</P>
+		<textarea id='test9'></textarea>
+		<br><span id='count9'></span> characters remaining remaining
+		<br><hr>
+
+<P>TEST 7</P>
+		<textarea id='test11'></textarea>
+		<br><span id='count11'></span> characters remaining remaining
+		<br><hr>
+
+<P> TEST 8</P>
+		<textarea id='test13'></textarea>
+		<br><span id='count13'></span> characters remaining remaining
+		<br><hr>
+
+	</body>
+</html>
