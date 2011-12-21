@@ -1,0 +1,16 @@
+#sidebar {
+	width: 0px;
+}
+
+#content {
+width: 770px;
+}
+
+.editable input[type=submit] {
+color: #F00;
+	   font-weight: bold;
+}
+.editable input[type=button] {
+color: #0F0;
+	   font-weight: bold;
+}

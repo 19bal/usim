@@ -1,0 +1,80 @@
+<style type="text/css">
+	div.imageSub { position: relative; }
+	div.imageSub img { z-index: 1; }
+
+	div.imageSub div {
+		position: absolute;
+		overflow: hidden;
+
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		filter: alpha(opacity=50);
+		opacity: 0.5;
+
+		text-align: center;
+		color: white;
+	}
+
+	div.imageSub div.hoca {
+		z-index: 3;
+		left: 	{{@SESSION.hoca['left']}}px;
+		right: 	{{@SESSION.hoca['right']}}px;
+		top: 	{{@SESSION.hoca['top']}}px;
+		bottom: {{@SESSION.hoca['bottom']}}px;
+
+		border-style: solid;
+		border-color: green;
+		color: green;
+	}
+	div.imageSub div.ogrenci {
+		z-index: 2;
+		left: 	{{@SESSION.ogrenci['left']}}px;
+		right: 	{{@SESSION.ogrenci['right']}}px;
+		top: 	{{@SESSION.ogrenci['top']}}px;
+		bottom: {{@SESSION.ogrenci['bottom']}}px;
+
+		border-style: solid;
+		border-color: red;
+		color: red;
+	}
+</style>
+
+<p class="answer">Karşılaştırmalı olarak gösterim</p>
+
+<table>
+	<tr>
+		<td valign="top">
+			<img src="/a/public/img/xmap_immap.jpg"><br>
+
+			<b>Image 1:</b> Radiological image. <br>
+		</td>
+		<td valign="top">
+			<div class="imageSub" style="width: {{@SESSION.imwidth}}px;"> <!-- Put Your Image Width -->
+				<img src="/a/public/img/xmap_immap.jpg"><br>
+
+				<div class="ogrenci">Student</div>
+			</div>			
+			
+			<b>Image 2:</b> Student's selection and identify student as "<font color="red"><b>{{@SESSION.ogrenci['yorum']}}</b></font>".
+		</td>
+		<td valign="top">
+			<div class="imageSub" style="width: {{@SESSION.imwidth}}px;"> <!-- Put Your Image Width -->
+				<img src="/a/public/img/xmap_immap.jpg"><br>
+
+				<div class="ogrenci">Student</div>
+				<div class="hoca">Author</div>
+			</div>			
+
+			<b>Image 3:</b> Comparasion the selections on image, <br>
+			student identify as "<font color="red"><b>{{@SESSION.ogrenci['yorum']}}</b></font>" and <br>
+			author  identify as "<font color="green"><b>{{@SESSION.hoca['yorum']}}</b></font>".
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td colspan="2">
+			<font color="red">red</font> rectangle for student and <font color="green">green</font> rectangle for author.
+		</td>
+	</tr>
+</table>
