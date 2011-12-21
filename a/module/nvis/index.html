@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html><head>
+		<title>Görsel Düğüm Tasarımı</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet"    href="_js/jq-alerts.css" type="text/css" media="all">
+		<link rel="stylesheet"    href="_js/_main.css" type="text/css" media="all">
+		<meta name="description"  content="Görsel yolla düğüm ve bağ oluşturma">
+		<link rel="stylesheet" type="text/css" href="_js/style.css" />
+		<link rel="stylesheet" type="text/css" href="_js/gh-buttons.css" />
+	</head>
+	<body>
+	<input type="hidden" name="cid" id="cid" value="3">
+	
+	<input type="hidden" name="nodes" id="nodes" value='[{"id": 1,"name" :"nodeisimi", "type" :"ilaç"},{"id": 2,"name" :"bazı", "type":"dal"},{"id": 4,"name" :"garip","type":"ilaç"},{"id": 8,"name" :"binode","type":"tahlil"}]'>
+	<input type="hidden" name="edges" id="edges" value='[[1,"edgeadı",0,"edgedaha"],[0,0,"edegem",1],["garp",0,0,0],[0,0,0,"guark"]]'>
+
+		<div style="display: none;" id="__notifyBar" class="jquery-notify-bar">Silinecek bir şey yok<br>Try saving a graph first</div>
+
+	<!-- the loading overlay -->
+	<div style="display: none;" id="loading-overlay">
+		<div>yükleniyor...<br><img src="_js/loading.gif"></div>
+	</div>
+
+	<!-- the tool bar -->	
+	<div id="form" class="button-group">
+		<input value="graf" type="hidden">
+		<a href="#" class="button icon1 dal">Dal</a>
+		<a href="#" class="button icon1 ilac">İlaç</a>
+		<a href="#" class="button icon1 tahlil">Tahlil</a>
+		<a href="#" class="button icon1 harita">Harita</a>
+		<a href="#" class="button icon1 rapor">Rapor</a>
+
+		<a href="#" class="button">|</a>
+		<a href="#" class="button icon1 bag">Bağlar</a>
+		<a href="#" class="button icon1 dugum">Düğümler</a>
+		<a href="#" class="button icon1 ciz">Yeniden çiz</a>
+		<a href="#" class="button icon1 baslat">Uygulamayı Yeniden Başlat</a>
+		<a href="#" class="button icon1 test">Test</a>
+		<div class="clear"></div>
+	</div>
+	
+	<!-- the canvas div must be emptied before plotting anything -->
+	<div style="height: 508px; width: 1328px;" id="canvas">
+		<svg height="503" width="1266" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<desc>Created with Raphaël</desc>
+			<defs></defs>
+			<ellipse fill-opacity="0.6" id="new" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" 
+					stroke="#bfac00" fill="#bfac00" ry="20" rx="30" cy="109" cx="493"></ellipse>
+			<text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" 
+					style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" 
+					text-anchor="middle" y="142.5" x="493"><tspan>new</tspan></text>
+			<ellipse fill-opacity="0.6" id="okay" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" 
+				stroke="#bf5600" fill="#bf5600" ry="20" rx="30" cy="147" cx="726"></ellipse>
+			<text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" 
+				style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" 
+				text-anchor="middle" y="180.5" x="726"><tspan>okay</tspan></text>
+		</svg>
+	</div>
+	
+	<!-- right click menu for each node -->
+	<div class="vmenu"> 
+		<div class="first_li nohover"><span style="font-weight:800"></span></div>
+		<div class="sep_li">Bağ</div>
+		<div id="createEdge"><a href="#" class="button icon loop"  >Oluştur</a></div> 
+		<div id="removeEdge"><a href="#" class="button icon trash" >Sil</a></div>
+
+		<div class="sep_li">Düğüm</div>
+		<div id="editNode"><a href="/a/edit/3/1/" class="button icon edit" target="_blank">Düzenle</a></div>
+		<div id="removeNode"><a href="#" class="button icon remove">Sil</a></div> 
+	</div>
+	
+	<!-- secret thing hmmm... not so secret, try pressing CTRL + SHIFT + S  (chrome only) -->
+	<div id="secret">
+		<div id="secret-text"></div>
+		<div id="secret-close"></div>
+		<input speech="" x-webkit-speech="" onspeechchange="secret(this.value);" onwebkitspeechchange="secret(this.value);">
+	</div>
+	
+	<!-- libraries being used -->
+		<!-- jquery -->
+		<script src="_js/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="_js/jq.js"></script>
+		<!-- jquery UI -->
+		<script type="text/javascript" src="_js/jq-ui.js"></script>
+		<!-- jquery alerts (to use instead of native alert function)-->
+		<script type="text/javascript" src="_js/jq-alerts.js"></script>
+		<!-- jquery notifyBar (to display the notifications) -->
+		<script type="text/javascript" src="_js/jq-notify.js"></script>
+		<!-- all other scripts are used to plot the graph (thanx to draculagraph and raphael libraries) -->
+		<script type="text/javascript" src="_js/Curry-1.js"></script> 
+		<script type="text/javascript" src="_js/raphael-min.js"></script> 
+		<script type="text/javascript" src="_js/dracula_algorithms.js"></script> 
+		<script type="text/javascript" src="_js/dracula_graffle.js"></script> 
+		<script type="text/javascript" src="_js/dracula_graph.js"></script> 
+		<script type="text/javascript" src="_js/seedrandom.js"></script>
+	
+	<!-- custom libraries -->
+	<script type="text/javascript" src="_js/Cookies.js"></script>
+	<script type="text/javascript" src="_js/_directedGraphCustom-stable.js"></script>
+	
+	<!-- main script -->
+	<script type="text/javascript" src="_js/__main.js"></script>
+
+	<!-- google analytics script --> 
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-23138869-1']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	
+	<form name="myform"  method="POST">
+		<div id="edges" align="center"> </div>
+		<div id="nodes" align="center">	 </div>
+	</form>
+
+</body></html>
