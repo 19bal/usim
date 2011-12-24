@@ -1,3 +1,361 @@
+
+<html>
 <h1>{{@pagetitle}}</h1>
 
-bmap gerçeklemesine dair
+bodymap çalışması <b>tamamlanmamış</b> olup <b>geliştirilmeye devam 
+  edilmektedir</b><br>
+
+ Resim üzerindeki noktalara sol  tıklandıgında bir seçim menüsü ve resmin 
+ altındaki tokeninputlar hazır durumdadır.
+
+
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/a/public/js/jquery.tokeninput.js"></script>
+    <link rel="stylesheet" href="/a/public/css/token-input.css" type="text/css" />
+    <link rel="stylesheet" href="/a/public/css/token-input-facebook.css" type="text/css" />
+
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("input[type=button]").click(function () {
+            alert("Would submit: " + $(this).siblings("input[type=text]").val());
+        });
+    });
+    
+</script>
+</head>
+
+<body>
+    <h1>&nbsp;</h1>
+
+       
+    
+
+
+    <h2 id="theme">&nbsp;</h2>
+    
+    
+    <style type="text/css">
+			BODY,
+			HTML {
+				padding: 0px;
+				margin: 0px;
+			}
+			BODY {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 11px;
+				background: #FFF;
+				padding: 15px;
+			}
+			
+			H1 {
+				font-family: Georgia, serif;
+				font-size: 20px;
+				font-weight: normal;
+			}
+			
+			H2 {
+				font-family: Georgia, serif;
+				font-size: 16px;
+				font-weight: normal;
+				margin: 0px 0px 10px 0px;
+			}
+			
+			
+			
+			#myList {
+				margin: 1em;
+				float: left;
+			}
+			
+			#myList UL {
+				padding: 0px;
+				margin: 0em 1em;
+			}
+			
+			#myList LI {
+				width: 100px;
+				border: solid 1px #2AA7DE;
+				background: #6CC8EF;
+				padding: 5px 5px;
+				margin: 2px 0px;
+				list-style: none;
+			}
+			
+			#options {
+				clear: left;
+			}
+			
+			#options INPUT {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 11px;
+				width: 150px;
+			}
+			
+		</style>
+
+    <script type="text/javascript" src="/a/public/js/jquery.js"></script>
+    <script type="text/javascript" src="/a/public/js/facebox.js"></script>
+    
+     <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox({
+          loadingImage : 'loading.gif',
+          closeImage   : 'closelabel.png'
+        });
+        vtip();
+      })
+    </script>
+    
+    <!-- tooltip » vtip -->
+    <script type="text/javascript" src="/a/public/js/vtip.js"></script>
+
+    <!-- ilaç seçimi -->
+    <script type="text/javascript" src="/a/public/js/jquery.tokeninput.js"></script> 
+    
+    <div id="content">
+      <script type="text/javascript" src="/a/public/js/jquery.tokeninput.js"></script> 
+      
+<script type="text/javascript" src="/a/public/js/jquery.maphilight.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+				$('.map').maphilight({fade: false});
+				});
+</script>		
+
+
+<script src="/a/public/js/jquery.contextMenu.js" type="text/javascript"></script>
+<link href="/a/public/css/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+        
+        
+<script type="text/javascript">
+			
+			$(document).ready( function() {
+				
+				// Show menu when #myDiv is clicked
+				$("#myDiv").contextMenu({
+					menu: 'myMenu'
+				},
+					function(action, el, pos) {
+					alert(
+						'Action: ' + action + '\n\n' +
+						'Element ID: ' + $(el).attr('id') + '\n\n' + 
+						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
+						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
+						);
+				});
+				
+				// Show menu when a list item is clicked
+				$("#myList UL LI").contextMenu({
+					menu: 'myMenu'
+				}, function(action, el, pos) {
+					alert(
+						'Action: ' + action + '\n\n' +
+						'Element text: ' + $(el).text() + '\n\n' + 
+						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
+						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
+						);
+				});
+				
+				// Disable menus
+				$("#disableMenus").click( function() {
+					$('#myDiv, #myList UL LI').disableContextMenu();
+					$(this).attr('disabled', true);
+					$("#enableMenus").attr('disabled', false);
+				});
+				
+				// Enable menus
+				$("#enableMenus").click( function() {
+					$('#myDiv, #myList UL LI').enableContextMenu();
+					$(this).attr('disabled', true);
+					$("#disableMenus").attr('disabled', false);
+				});
+				
+				// Disable cut/copy
+				$("#disableItems").click( function() {
+					$('#myMenu').disableContextMenuItems('#cut,#copy');
+					$(this).attr('disabled', true);
+					$("#enableItems").attr('disabled', false);
+				});
+				
+				// Enable cut/copy
+				$("#enableItems").click( function() {
+					$('#myMenu').enableContextMenuItems('#cut,#copy');
+					$(this).attr('disabled', true);
+					$("#disableItems").attr('disabled', false);
+				});				
+				
+			});
+			
+		</script>
+        </head>
+       
+		
+		 
+        
+        <!-- Buraya yazilan hersey de bir context menu acılır 
+			<img src="../karala/body_map.jpg" />
+            !-->
+            
+	    <img class="map" src="/a/public/img/xmap_bmap.jpg" usemap="#bmap"  
+	    />
+
+<div id="myDiv">
+
+<!-- 
+<div id="myDiv"> ile resim haritasında sadece koordinatlari belirtilen 
+noktalarda context menu acilmasini saglar
+!-->
+
+<map id="bmap" name="bmap">
+	<area shape="circle" alt="neck" 	  coords="180,65,6"  href="#" target="" title="neck"       onclick="sec('01');" >
+	<area shape="circle" alt="chest" 	  coords="156,126,5" href="#" target="" title="chest"      onclick="sec('02');" > 
+	<area shape="circle" alt="l_shoulder"     coords="185,85,6"  href="#" target="" title="l_shoulder" onClick="sec('03');" >
+	<area shape="circle" alt="r_shoulder"     coords="152,85,7"  href="#" target="" title="r_shoulder" onClick="sec('04');" >
+	<area shape="circle" alt="l_arm" 	  coords="184,118,8" href="#" target="" title="l_arm"      onclick="sec('05');" >
+	<area shape="circle" alt="r_arm" 	  coords="136,103,5" href="#" target="" title="r_arm"      onclick="sec('06');" >
+	<area shape="circle" alt="l_hand"  	  coords="167,176,4" href="#" target="" title="l_hand"     onclick="sec('07');" >
+	<area shape="circle" alt="r_hand" 	  coords="117,93,3"  href="#" target="" title="r_hand"     onclick="sec('08');" >
+	<area shape="circle" alt="l_leg" 	  coords="170,202,4" href="#" target="" title="l_leg"      onclick="sec('09');" >
+	<area shape="circle" alt="r_leg" 	  coords="148,201,4" href="#" target="" title="r_leg"      onclick="sec('10');" >
+	<area shape="circle" alt="l_knee" 	  coords="165,227,6" href="#" target="" title="l_knee"     onclick="sec('11');" >
+	<area shape="circle" alt="r_knee" 	  coords="150,232,5" href="#" target="" title="r_knee"     onclick="sec('12');" >
+	<area shape="circle" alt="l_ankle" 	  coords="178,281,7" href="#" target="" title="l_ankle"    onclick="sec('13');" >
+	<area shape="circle" alt="r_ankle" 	  coords="158,273,4" href="#" target="" title="r_ankle"    onclick="sec('14');" >
+	<area shape="circle" alt="l_foot" 	  coords="160,297,4" href="#" target="" title="l_foot"     onclick="sec('15');" >
+	<area shape="circle" alt="r_foot" 	  coords="145,285,6" href="#" target="" title="r_foot"     onclick="sec('16');" >
+
+	
+</div>
+        
+</map>
+
+<script language="JavaScript" type="text/javascript">
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+		  var rest = this.slice((to || from) + 1 || this.length);
+		    this.length = from < 0 ? this.length + from : from;
+			  return this.push.apply(this, rest);
+};
+
+function sec(bolge)
+{
+	var BOLGE = ['NULL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+	var hidden = document.getElementById('hselected');
+	var dict = hidden.value.split(',');
+	var anahtar = false;
+
+	bolge = bolge.toString();
+	if(hidden.value == "") {
+		hidden.value = bolge; 
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+		return;
+	}
+	
+	for(var i=0; i<dict.length; i++)
+		if(dict[i] == bolge) {
+			dict.remove(i);
+
+			var id = parseInt(bolge);
+			$("#selected").tokenInput("remove", {name: BOLGE[id]});
+			anahtar = true;
+		}
+	
+	if(anahtar == false) {
+		dict.push(bolge);
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+	}
+	
+	hidden.value = dict.join(",");
+}
+
+function soyle()
+{
+	var hidden = document.getElementById('selected');
+	var dict = hidden.value.split(',');
+	var BOLGE = ['neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+
+	var str = "";
+	for(var i=0; i<dict.length; i++)
+		str = str + BOLGE[dict[i] - 1] + ";";
+	
+	alert(str);
+}	
+</script>
+
+
+
+
+<!-- 
+		ACİLİR MENU
+		 !-->
+		<ul id="myMenu" class="contextMenu">
+	    
+		
+	      <p>
+		      
+	        <!--<li class="edit"> <a href ="#edit">Resim </a></li> !-->
+		      
+	      </p>
+	      <li class="cut separator"><a href="#cut">Resim</a>
+		  </li>
+			<li class="copy"><a href="#copy">Ses</a></li>
+			
+			<li class="paste"><a href="#paste">Video</a></li>
+			<!--
+			<li class="delete"><a href="#delete">Delete</a></li>
+			<li class="quit separator"><a href="#quit">Quit</a></li>
+			
+			!-->
+		</ul>
+ 
+        
+
+
+        <div>
+        <div class="tokeninput">
+		<p class="answer left" align="left">Tetkik yapmak istediiniz vucut haritasi uzerinde bolgeyi ya tiklayarak ekleyip/kaldirin 
+			veya sagdaki girdi alanina girerek yapnz.</p>
+		<label class="label">
+			<input type="text" name="selected" id="selected">
+		</label>
+	</div>
+	<input type="hidden" name="hselected" id="hselected">
+
+	<br>
+	<input type="submit" value="Secilenleri Soyle">
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#selected").tokenInput([
+				{id:1,  name: "neck"},
+				{id:2,  name: "chest"},
+				{id:3,  name: "l_shoulder"},
+				{id:4,  name: "r_shoulder"},
+				{id:5,  name: "l_arm"},
+				{id:6,  name: "r_arm"},
+				{id:7,  name: "l_leg"},
+				{id:8,  name: "r_leg"},
+				{id:9,  name: "l_knee"},
+				{id:10, name: "r_knee"},
+				{id:11, name: "l_ankle"},
+				{id:12, name: "r_ankle"},
+				{id:13, name: "l_foot"},
+				{id:14, name: "r_foot"},
+				{id:15, name: "null"},
+				{id:16, name: "null"},
+			]);
+          });
+    </script>
+    </div>
+  
+           
+</body>
+</html>
