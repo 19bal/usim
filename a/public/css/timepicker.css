@@ -1,0 +1,26 @@
+body,img,p,h1,h2,h3,h4,h5,h6,form,table,td,ul,li,dl,dt,dd,pre,blockquote,fieldset,label{
+	margin:0;
+	padding:0;
+	border:0;
+}
+body{ background-color: #363531; border-top: solid 4px #C60; font: 90% Arial, Helvetica, sans-serif; padding: 20px; }
+h1,h2{ margin: 10px 0; }
+p{ margin: 10px 0; }
+
+pre{ padding: 20px; background-color: #ffffcc; border: solid 1px #fff; }
+.wrapper{ background-color: #ffffff; width: 800px; border: solid 1px #eeeeee; padding: 20px; margin: 0 auto; }
+.example-container{ background-color: #f4f4f4; border-bottom: solid 2px #777777; margin: 0 0 40px 0; padding: 20px; }
+.example-container p{ font-weight: bold; }
+.example-container > dl dt{ font-weight: bold; height: 20px; }
+.example-container > dl dd{ margin: -20px 0 10px 100px; border-bottom: solid 1px #fff; }
+.example-container input{ width: 150px; }
+.clear{ clear: both; }
+#ui-datepicker-div, .ui-datepicker{ font-size: 80%; }
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
