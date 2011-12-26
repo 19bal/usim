@@ -15,8 +15,8 @@
 		<script type="text/javascript" src="/a/public/js/timepicker.js"></script>
 
 		<script type="text/javascript">
-			function foo() {
-				var stime = $('#example16_start');
+			function foo(hangisi) {
+				var stime = $(hangisi);
 				var t = new Date(Date(stime.val()));
 
 				alert(t.getTime());
@@ -26,7 +26,8 @@
 	<p>Create a datetime range with a start and end date.</p>
 	<div>
 		<input type="text" name="example16_start" id="example16_start" value="" /> <input type="text" name="example16_end" id="example16_end" value="" />
-		<br><a href="#" onclick="foo();">Zaman?</a>
+		<br><a href="#" onclick="foo('#example16_start');">Başlangıç Zamanı?</a>
+		<br><a href="#" onclick="foo('#example16_end');">Bitiş Zamanı?</a>
 	</div>
 	
 
