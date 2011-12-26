@@ -1,8 +1,8 @@
 $(function(){
 
-	$('#example16_start').datetimepicker({
+	$('#pstart').datetimepicker({
 	    onClose: function(dateText, inst) {
-	        var endDateTextBox = $('#example16_end');
+	        var endDateTextBox = $('#pend');
 	        if (endDateTextBox.val() != '') {
 	            var testStartDate = new Date(dateText);
 	            var testEndDate = new Date(endDateTextBox.val());
@@ -15,12 +15,12 @@ $(function(){
 	    },
 	    onSelect: function (selectedDateTime){
 	        var start = $(this).datetimepicker('getDate');
-	        $('#example16_end').datetimepicker('option', 'minDate', new Date(start.getTime()));
+	        $('#pend').datetimepicker('option', 'minDate', new Date(start.getTime()));
 	    }
 	});
-	$('#example16_end').datetimepicker({
+	$('#pend').datetimepicker({
 	    onClose: function(dateText, inst) {
-	        var startDateTextBox = $('#example16_start');
+	        var startDateTextBox = $('#pstart');
 	        if (startDateTextBox.val() != '') {
 	            var testStartDate = new Date(startDateTextBox.val());
 	            var testEndDate = new Date(dateText);
@@ -33,7 +33,7 @@ $(function(){
 	    },
 	    onSelect: function (selectedDateTime){
 	        var end = $(this).datetimepicker('getDate');
-	        $('#example16_start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+	        $('#pstart').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
 	    }
 	});
 

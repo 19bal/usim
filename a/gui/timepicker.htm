@@ -15,21 +15,25 @@
 		<script type="text/javascript" src="/a/public/js/timepicker.js"></script>
 
 		<script type="text/javascript">
-			function foo(hangisi) {
-				var stime = $(hangisi);
-				var t = new Date(Date(stime.val()));
+			function guncelle(hangisi) {
+				var tm = $("#p" + hangisi); 
+				var txt = document.getElementById('h' + hangisi);
 
-				alert(t.getTime());
+				txt.setAttribute('value', tm.val());
 			}
 		</script>
 	<body> 
 	<p>Create a datetime range with a start and end date.</p>
 	<div>
-		<input type="text" name="example16_start" id="example16_start" value="" /> <input type="text" name="example16_end" id="example16_end" value="" />
-		<br><a href="#" onclick="foo('#example16_start');">Başlangıç Zamanı?</a>
-		<br><a href="#" onclick="foo('#example16_end');">Bitiş Zamanı?</a>
+		<input type="text" name="pstart" id="pstart" value="" onchange="guncelle('start');"/> 
+		<input type="text" name="pend"   id="pend"   value="" onchange="guncelle('end');"  />
+
 	</div>
-	
+
+	<form>
+		<input type="text" name="hstart" id="hstart" value="">
+		<input type="text" name="hend"   id="hend"   value="">
+	</form>
 
 	</body> 
 </html>
