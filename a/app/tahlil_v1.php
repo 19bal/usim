@@ -60,7 +60,7 @@ class tahlil_v1 extends Home {
 		if($this->get('dbg'))	print_pre($params, "[DEBUG] ".__CLASS__. ":".__FUNCTION__.":params");
 	}
 
-	function form($params=NULL, $preselected=array()) {
+	function form($params=NULL, $preselected=array('010101' => true)) {
 		$dbg = $this->get('dbg');
 		$lang = '';
 		if(F3::get('SESSION.lang') == 'en_US') $lang = 'EN';
@@ -80,6 +80,8 @@ class tahlil_v1 extends Home {
 		$a .= '});';
 		$a .= "</script>\n\n";
 		// >
+
+		$a .= "<form action='/a/tahlil/v1/slist' method='post'>\n";
 
 		$a .= "<div id='tabs'>\n";
 
@@ -154,12 +156,21 @@ class tahlil_v1 extends Home {
 			$a .= "\t</div>\n";
 		}
 		$a .= "</div>";
+		
+		$a .= "\t<input type='submit' value='Tahlilleri Listele'>\n";
+		$a .= "</form>\n";
 
 		$this->set('tahlil_merkezi', $a);
 
 		$this->hshow('Tahlil', 'tahlil_v1_form');
 	}
 
+	function slist($params=NULL) {
+		if($this->get('dbg'))	print_pre($params, "[DEBUG] ".__CLASS__. ":".__FUNCTION__.":params");
+		$tahlil = $this->get('POST.tahlil');
+		print_pre($tahlil, 'TAHLIL');
+
+	}
 }
 
 ?>
