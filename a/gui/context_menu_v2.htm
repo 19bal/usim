@@ -4,22 +4,58 @@
 <link href="/a/public/css/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
+function soyle() {
+  var m = $(".context-menu-one").data();
+
+  alert("resim:" + m['resim'] + ", ses:" + m['ses'] + ", metin:" + m['metin']);
+}
+
 $(function(){
     $.contextMenu({
         selector: '.context-menu-one', 
+	trigger: 'left',
+	autoHide: true,
+        items: {
+	    resim: {
+	      name: "Resim?",
+	      type: 'checkbox',
+	      selected: true
+	    },
+	    ses: {
+	      name: "Ses?",
+	      type: 'checkbox',
+	      selected: false
+	    },
+	    metin: {
+	      name: "Metin?",
+	      type: 'checkbox',
+	      selected: false
+	    },
+	    sep1: "---------",
+	    quit: {name: "Quit", icon: "quit"}
+	},		
         callback: function(key, options) {
             var m = "clicked: " + key;
             window.console && console.log(m) || alert(m); 
         },
-        items: {
-            "edit": {name: "Edit", icon: "edit"},
-            "cut": {name: "Cut", icon: "cut"},
-            "copy": {name: "Copy", icon: "copy"},
-            "paste": {name: "Paste", icon: "paste"},
-            "delete": {name: "Delete", icon: "delete"},
-            "sep1": "---------",
-            "quit": {name: "Quit", icon: "quit"}
-        }
+	events: {
+            show: function(opt) {
+                // this is the trigger element
+                var $this = this;
+                // import states from data store 
+                $.contextMenu.setInputValues(opt, $this.data());
+                // this basically fills the input commands from an object
+                // like {name: "foo", yesno: true, radio: "3", …}
+            }, 
+            hide: function(opt) {
+                // this is the trigger element
+                var $this = this;
+                // export states to data store
+                $.contextMenu.getInputValues(opt, $this.data());
+                // this basically dumps the input commands' values to an object
+                // like {name: "foo", yesno: true, radio: "3", …}
+	    }
+	}    
     });
 });
 </script>
@@ -27,3 +63,5 @@ $(function(){
 <div class="context-menu-one">
     <strong>right click me</strong>
 </div>
+
+<a href="#" onclick="soyle();">Söyle</a>
