@@ -416,3 +416,5 @@ $(document).ready(function(){
 });
 //g.addNodeFromString(document.getElementById("nodes").value);
 // g.addEdgesFromString(document.getElementById("edges").value);
+
+plot();
