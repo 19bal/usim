@@ -9,7 +9,7 @@ function Edge(node,target,value){
 	if(target&&value)
 		this.addTarget(target,value)
 	else if(target){
-		if(typeof target == "Element")
+		if(target instanceof Element)
 			this.addTargets(target);
 		else
 			this.addTarget(target);
@@ -29,7 +29,7 @@ Edge.prototype = {
 	addTarget:function(target,value){
 		var r = false;
 		if(target&&this.node!=undefined){
-			if(typeof target == "Element"){
+			if(target instanceof Element){
 				r = new Array();
 				for(var i=0;i<target.length;i++){
 					var j=0,found=false;
@@ -68,7 +68,7 @@ Edge.prototype = {
 	/* warning: very raw, to be handled by specific functions */
 	addTargets : function(arr){
 		for(var i=0;i<arr.length;i++){
-			if(typeof arr[i] == "Element" && arr[i][1])
+			if(arr[i] instanceof Element && arr[i][1])
 				this.targets.push([arr[i][0],arr[i][1]]);
 			else
 				this.targets.push(arr[i]);
@@ -77,7 +77,7 @@ Edge.prototype = {
 	removeTarget:function(target){
 		var r = null;
 		if(target){
-			if(typeof target == "Element"){
+			if(target instanceof Element){
 				r = new Array();
 				for(var i=0;i<target.length;i++){
 					var j=0;
@@ -106,7 +106,7 @@ Edge.prototype = {
 		return r;
 	},
 	hasTarget:function(target){
-		if(typeof target != "Element"){
+		if(target instanceof Element){
 			for(var i=0;i<this.targets.length;i++) {
 				if(typeof this.targets[i][0] != "undefined"){
 						if(this.targets[i][0].getName() == target.getName())
@@ -174,7 +174,7 @@ function DirectedGraph(init){
 	this.nodes=new Array();
 	this.edges=new Array();
 	this.isBidirectional = false;
-	if(typeof init == "Element"){
+	if(! init instanceof Element){
 		if(init.raw){
 			this.name = init.raw.name;
 			this.nodes = init.raw.nodes;
@@ -186,8 +186,8 @@ function DirectedGraph(init){
 		else{
 			init.type=="bidirectional" ? this.setType("bidirectional") : null;
 			init.name ? this.setName(init.name) : null;
-			typeof init.nodes == "Element" ? this.addNode(init.nodes) : null;
-			typeof init.edges == "Element" ? this.addEdges(init.edges) : null;
+			init.nodes instanceof Element ? this.addNode(init.nodes) : null;
+			init.edges instanceof Element ? this.addEdges(init.edges) : null;
 		}
 	}
 }
@@ -257,9 +257,7 @@ DirectedGraph.prototype = {
 	* false if it wasn't because it was already there
 	*/
 	addNode: function(a){
-		console.log(typeof a); 
-		console.log(a instanceof Element); 
-		if(typeof a != "Element"){
+		if(a instanceof Element){
 			if(!this.hasNode(a)){
 				this.nodes.push(a);
 				return a;
@@ -280,7 +278,7 @@ DirectedGraph.prototype = {
 	* @return true if it is. False if it isn't.
 	*/
 	hasNode: function(a){
-		if(typeof a != "Element"){
+		if(a instanceof Element){
 			for(var i=0;i<this.nodes.length;i++){
 			//console.log("hs node  " + this.nodes[i].getName() + "   "  + a.getName());
 				if(this.nodes[i].getName() == a.getName())
@@ -302,7 +300,7 @@ DirectedGraph.prototype = {
 	* WORKS
 	*/
 	removeNode: function(a){
-		if(typeof a != "Element"){
+		if(a instanceof Element){
 			for(var i=0;i<this.nodes.length;i++){
 				if(this.nodes[i].getName()==a.getName()){
 					if(this.hasEdgeFrom(a))
@@ -505,7 +503,7 @@ DirectedGraph.prototype = {
 	*/
 	removeEdge: function(node,target){
 		if(this.hasEdgeFrom(node)){
-			if(typeof target != "Element"){
+			if(target instanceof Element){
 				var arr = this.edges[this.indexOfEdge(node)].targets.slice();
 				for(var i=0;i<arr.length;i++)
 					if(arr[i] == target || arr[i][0] == target){
@@ -640,7 +638,7 @@ DirectedGraph.prototype = {
 					if(targets){
 						for(var i=0;i<targets.length;i++){
 							var thisTarget = null;
-							if(typeof targets[i] == "Element")
+							if(targets[i] instanceof Element)
 								thisTarget = targets[i][0];
 							else
 								thisTarget = targets[i];
