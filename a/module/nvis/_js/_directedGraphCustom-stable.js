@@ -257,7 +257,8 @@ DirectedGraph.prototype = {
 	* false if it wasn't because it was already there
 	*/
 	addNode: function(a){
-		console.log(typeof a);
+		console.log(typeof a); 
+		console.log(a instanceof Element); 
 		if(typeof a != "Element"){
 			if(!this.hasNode(a)){
 				this.nodes.push(a);
