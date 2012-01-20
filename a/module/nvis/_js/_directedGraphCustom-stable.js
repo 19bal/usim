@@ -46,7 +46,7 @@ Edge.prototype = {
 			else{
 				var i=0,found=false;
 				while(i<this.targets.length&&!found){
-					console.log("bzaar  " + this.targets[i] + "   "  + target.getName());
+					//console.log("bzaar  " + this.targets[i] + "   "  + target.getName());
 					this.targets[i][0].getName()==target.getName()||this.targets[i][0].getName()==target.getName() ? found=true : null;
 					i++;
 				}
@@ -257,6 +257,7 @@ DirectedGraph.prototype = {
 	* false if it wasn't because it was already there
 	*/
 	addNode: function(a){
+		console.log(typeof a);
 		if(typeof a != "Element"){
 			if(!this.hasNode(a)){
 				this.nodes.push(a);
@@ -280,7 +281,7 @@ DirectedGraph.prototype = {
 	hasNode: function(a){
 		if(typeof a != "Element"){
 			for(var i=0;i<this.nodes.length;i++){
-			console.log("hs node  " + this.nodes[i].getName() + "   "  + a.getName());
+			//console.log("hs node  " + this.nodes[i].getName() + "   "  + a.getName());
 				if(this.nodes[i].getName() == a.getName())
 					return true;
 				}	
@@ -331,32 +332,32 @@ DirectedGraph.prototype = {
 			if(from.getName()!=to.getName()){
 				var r = false;
 				if(!this.hasNode(from))
-					console.log("Hata kontrol 55");
+					//console.log("Hata kontrol 55");
 					this.addNode(from);
 				if(!this.hasNode(to))
-					console.log("Hata kontrol 55");
+					//console.log("Hata kontrol 55");
 					this.addNode(to);
 				if(!this.hasEdgeFrom(from)){
 					if(value&&value!=""){
 						this.edges.push(new Edge(from,to,value));
-						console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						//console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 					else{
 						this.edges.push(new Edge(from,to));
-						console.log("added edge '"+from+"' to point '"+to.toString()+"'");
+						//console.log("added edge '"+from+"' to point '"+to.toString()+"'");
 						r = true;
 					}
 				}
 				else{
 					if(!value || value==""){
 						if(this.edges[this.indexOfEdge(from)].addTarget(to)){
-							console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
+							//console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
 							r = true;
 						}
 					}
 					else if(this.edges[this.indexOfEdge(from)].addTarget(to,value)){
-						console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						//console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 				}
@@ -388,32 +389,32 @@ DirectedGraph.prototype = {
 			if(from.getName()!=to.getName()){
 				var r = false;
 				if(!this.hasNode(from))
-					console.log("Hata kontrol 55");
+					//console.log("Hata kontrol 55");
 					this.addNode(from);
 				if(!this.hasNode(to))
-					console.log("Hata kontrol 55");
+					//console.log("Hata kontrol 55");
 					this.addNode(to);
 				if(!this.hasEdgeFrom(from)){
 					if(value&&value!=""){
 						this.edges.push(new Edge(from,to,value));
-						console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						//console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 					else{
 						this.edges.push(new Edge(from,to));
-						console.log("added edge '"+from+"' to point '"+to.toString()+"'");
+						//console.log("added edge '"+from+"' to point '"+to.toString()+"'");
 						r = true;
 					}
 				}
 				else{
 					if(!value || value==""){
 						if(this.edges[this.indexOfEdge(from)].addTarget(to)){
-							console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
+							//console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
 							r = true;
 						}
 					}
 					else if(this.edges[this.indexOfEdge(from)].addTarget(to,value)){
-						console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						//console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 				}
@@ -592,7 +593,7 @@ DirectedGraph.prototype = {
 		}
 		
 		
-			// prepare console text with matrix
+			// prepare //console text with matrix
 			var t = "";
 			for(var i=0;i<matrix.length;i++){
 				for(var j=0;j<matrix[i].length;j++)
@@ -600,7 +601,7 @@ DirectedGraph.prototype = {
 				t+="\n";
 			}
 			
-			// log console
+			// log //console
 			//console.log(t);
 			
 			// return matrix
