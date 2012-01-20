@@ -40,7 +40,7 @@
 			case "Tahlil":
 			case "Harita":
 			case "Rapor":
-				jPrompt("Dügümm adı","düğüm","Düğüm", function(r){
+				jPrompt("Dügüm adı","düğüm","Düğüm", function(r){
 					if(r!="" && r!="düğüm") {
 						if(!addNode(new Element(r , key)))
 							$.notifyBar({html:"Düğüm zaten var, ekleyemedim.",cls:"error"});
@@ -407,11 +407,12 @@ $(document).ready(function(){
 		$.notifyBar({html:data});
 		g.addEdgesFromString(data);
 	});
-	plot();
 
 	window.setTimeout(function(){
 		$("#loading-overlay").fadeOut(400);
 	},1500);
+
+	plot();
 });
 //g.addNodeFromString(document.getElementById("nodes").value);
 // g.addEdgesFromString(document.getElementById("edges").value);
