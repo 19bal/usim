@@ -42,7 +42,7 @@ Edge.prototype = {
 						r.push(target[i]);
 					}
 				}
-			}
+			} 
 			else{
 				var i=0,found=false;
 				while(i<this.targets.length&&!found){
