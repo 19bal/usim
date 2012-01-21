@@ -384,6 +384,8 @@ DirectedGraph.prototype = {
 	addEdge: function(from,to,value,once){
 		from = this.findNodeByName(from);
 		to = this.findNodeByName(to);
+		console.log("added edge '"+from.getName()+"' to point '"+ to.getName());
+		
 		if(from.getName()&&to.getName()){
 			if(from.getName()!=to.getName()){
 				var r = false;
@@ -396,12 +398,12 @@ DirectedGraph.prototype = {
 				if(!this.hasEdgeFrom(from)){
 					if(value&&value!=""){
 						this.edges.push(new Edge(from,to,value));
-						//console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 					else{
 						this.edges.push(new Edge(from,to));
-						//console.log("added edge '"+from+"' to point '"+to.toString()+"'");
+						console.log("added edge '"+from+"' to point '"+to.toString()+"'");
 						r = true;
 					}
 				}
