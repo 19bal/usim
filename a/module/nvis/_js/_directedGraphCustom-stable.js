@@ -552,8 +552,12 @@ DirectedGraph.prototype = {
 				if(edges[i][j] == 0){
 					continue
 				}else if(edges[i][j] == 1){
+
+					console.log("edge '"+nodes[i].getName()+"' to point '"+nodes[j].getName());
 					this.addEdgeByObject(this.nodes[i], this.nodes[j], "", "");
 				}else {
+
+					console.log("edge '"+nodes[i].getName()+"' to point '"+nodes[j].getName()+"(weight: "+edges[i][j]+")'");
 					this.addEdgeByObject(this.nodes[i], this.nodes[j], edges[i][j], "");
 				}
 			}
