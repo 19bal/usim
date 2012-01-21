@@ -326,7 +326,8 @@ DirectedGraph.prototype = {
 		}
 	},
 	
-	addEdgeByObject: function(from,to,value,once){
+	addEdgeByObject: function(from, to, value, once){
+		console.log("edge '"+from+"' to point '"+to+"(weight: "+value+")'");
 		if(from.getName()&&to.getName()){
 			if(from.getName()!= to.getName()){
 				console.log("edge '"+from.getName()+"' to point '"+to.getName()+"(weight: "+value+")'");
