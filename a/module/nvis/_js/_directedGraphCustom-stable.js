@@ -328,35 +328,37 @@ DirectedGraph.prototype = {
 	
 	addEdgeByObject: function(from,to,value,once){
 		if(from.getName()&&to.getName()){
-			if(from.getName()!=to.getName()){
+			if(from.getName()!= to.getName()){
+				console.log("edge '"+from.getName()+"' to point '"+to.getName()+"(weight: "+value+")'");
+				
 				var r = false;
 				if(!this.hasNode(from))
-					//console.log("Hata kontrol 55");
+					console.log("Hata kontrol 55");
 					this.addNode(from);
 				if(!this.hasNode(to))
-					//console.log("Hata kontrol 55");
+					console.log("Hata kontrol 55");
 					this.addNode(to);
 				if(!this.hasEdgeFrom(from)){
 					if(value&&value!=""){
 						this.edges.push(new Edge(from,to,value));
-						//console.log("added edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						console.log("added edge '"+from.getName()+"' to point '"+to.getName()+"(weight: "+value+")'");
 						r = true;
 					}
 					else{
 						this.edges.push(new Edge(from,to));
-						//console.log("added edge '"+from+"' to point '"+to.toString()+"'");
+						console.log("added edge '"+from.getName()+"' to point '"+to.getName());
 						r = true;
 					}
 				}
 				else{
 					if(!value || value==""){
 						if(this.edges[this.indexOfEdge(from)].addTarget(to)){
-							//console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
+							console.log("updated edge '"+from+"' to point '"+to.toString()+"'");
 							r = true;
 						}
 					}
 					else if(this.edges[this.indexOfEdge(from)].addTarget(to,value)){
-						//console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
+						console.log("updated edge '"+from+"' to point '"+to.toString()+"(weight: "+value+")'");
 						r = true;
 					}
 				}
