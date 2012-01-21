@@ -435,6 +435,8 @@ DirectedGraph.prototype = {
 	*/
 	addEdges: function(edges){
 		for(var i=0;i<edges.length;i++)
+
+			console.log("gogogo edge '"+edges[i][0].getName()+"' to point '"+ edges[i][1].getName());
 			this.addEdge(edges[i][0],edges[i][1]);
 	},
 	/*
