@@ -174,7 +174,7 @@ function DirectedGraph(init){
 	this.nodes=new Array();
 	this.edges=new Array();
 	this.isBidirectional = false;
-	if(! init instanceof Element){
+	if(!init instanceof Element){
 		if(init.raw){
 			this.name = init.raw.name;
 			this.nodes = init.raw.nodes;
