@@ -405,6 +405,8 @@ $(document).ready(function(){
 	});
 	$.get('/a/public/ajax/get_edges.php?cid=' + getCID(), function (data) {
 		$.notifyBar({html:data});
+
+		console.log(data);
 		g.addEdgesFromString(data);
 	});
 
